@@ -30,5 +30,24 @@
     },
     "clangd.arguments": [
         "--header-insertion=never"
+    ],
+    "cSpell.words": [
+        "baterry",
+        "bitkb",
+        "bytekb",
+        "datablock",
+        "delayms",
+        "eeconfig",
+        "eeprom",
+        "gpio",
+        "keyrecord",
+        "LGUI",
+        "londing",
+        "LSFT",
+        "nkro",
+        "Nuphy",
+        "PRTA",
+        "sethsv",
+        "sysc"
     ]
 }
