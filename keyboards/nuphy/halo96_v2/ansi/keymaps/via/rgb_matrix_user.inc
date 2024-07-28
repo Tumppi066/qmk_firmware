@@ -42,8 +42,9 @@ static bool position_mode(effect_params_t* params) {
 
     rgb_matrix_set_color(59, rgb.r, rgb.g, rgb.b);      // F
     rgb_matrix_set_color(62, rgb.r, rgb.g, rgb.b);      // J
-    rgb_matrix_set_color(69, rgb.r, rgb.g, rgb.b);      // Numpad 5
     rgb_matrix_set_color(83, rgb.r, rgb.g, rgb.b);      // up
+    // Fix for numpad 5 not lighting up
+    rgb_matrix_set_color(69, rgb.r, rgb.g, rgb.b);      // Numpad 5
 
     return rgb_matrix_check_finished_leds(led_max);
 }
