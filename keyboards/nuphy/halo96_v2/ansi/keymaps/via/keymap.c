@@ -1,5 +1,63 @@
 #include QMK_KEYBOARD_H
 
+// Added SnapTap/SOCD from Gero on Youtube
+// https://www.youtube.com/watch?v=d2LJlwJnLqw
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static bool wHeld = false;
+    static bool sHeld = false;
+    static bool aHeld = false;
+    static bool dHeld = false;
+
+    switch (keycode) {
+        case KC_W:
+            wHeld = record->event.pressed;
+            if (sHeld && wHeld) {
+                unregister_code(KC_S);
+            } else if (sHeld && !wHeld) {
+                unregister_code(KC_W);
+                register_code(KC_S);
+                return false; // don't send original key pressed
+            }
+            return true;
+
+        case KC_S:
+            sHeld = record->event.pressed;
+            if (wHeld && sHeld) {
+                unregister_code(KC_W);
+            } else if (wHeld && !sHeld) {
+                unregister_code(KC_S);
+                register_code(KC_W);
+                return false; // don't send original key pressed
+            }
+            return true;
+
+        case KC_A:
+            aHeld = record->event.pressed;
+            if (dHeld && aHeld) {
+                unregister_code(KC_D);
+            } else if (dHeld && !aHeld) {
+                unregister_code(KC_A);
+                register_code(KC_D);
+                return false; // don't send original key pressed
+            }
+            return true;
+
+        case KC_D:
+            dHeld = record->event.pressed;
+            if (aHeld && dHeld) {
+                unregister_code(KC_A);
+            } else if (aHeld && !dHeld) {
+                unregister_code(KC_D);
+                register_code(KC_A);
+                return false; // don't send original key pressed
+            }
+            return true;
+
+        default:
+            return true; // Process all other keycodes normally
+    }
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // layer 0 Mac
